@@ -57,17 +57,9 @@ public class Main {
         readCSV.setInputFile(args[1]);
         readCSV.openFile();
 
-        // connect to OpenLM Server and get all current users
-        System.out.println("connecting openlm server to get current user list");
 
-        // Authenticate with OpenLM Server if needed
-        //connectToOpenLM olmConnector;
+        connectToOpenLM olmConnector;
         olmConnector = new connectToOpenLM();
-        String allExistingUsers = olmConnector.sendPost(LoadPropertiesFile.getOpenLMServerURL(), getAllUsersRequest);
-        if (allExistingUsers == null) {
-            System.out.println("Error connecting to OpenLM Server!");
-            return;
-        }
 
         // Authenticate with OpenLM Server if needed
 
@@ -89,6 +81,15 @@ public class Main {
         else {
             SessionID="0";
         }
+
+        // connect to OpenLM Server and get all current users
+        System.out.println("connecting openlm server to get current user list");
+        String allExistingUsers = olmConnector.sendPost(LoadPropertiesFile.getOpenLMServerURL(), getAllUsersRequest);
+        if (allExistingUsers == null) {
+            System.out.println("Error connecting to OpenLM Server!");
+            return;
+        }
+
 
         // Load result in to XMLDomParser
         XmlDomParser XDP = new XmlDomParser(allExistingUsers);
