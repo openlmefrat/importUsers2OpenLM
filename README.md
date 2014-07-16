@@ -58,8 +58,10 @@ delimiter = ,
 ```
 
 ####Usage - how to run (Using Jar file):####
+To run this program write this line in your command prompt. replace the <> with the Suitable file path. 
+```
 java -jar importUsers2OpenLM.jar <properties file> <users csv file>
-
+```
 ####Next steps####
 This is the initial version of the software, developed as an  in-house tool in order to periodically update our users. A better solution would be to use Active Directory synchronization but it is not currently supported in our organization.
 
